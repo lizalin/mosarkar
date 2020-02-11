@@ -1,0 +1,48 @@
+Options +FollowSymlinks
+Options -Indexes 
+RewriteEngine On 
+RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK|OPTIONS) 
+RewriteRule .* - [F]
+##ServerSignature Off
+ <ifModule mod_headers.c>  
+    Header unset Access-Control-Allow-Origin  
+    Header unset Access-Control-Allow-Headers 
+    Header unset Access-Control-Allow-Methods 
+    Header unset Access-Control-Allow-Credentials 
+    Header add Access-Control-Allow-Origin "*"
+    Header add Access-Control-Allow-Headers "origin, content-type"  
+    Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE"    
+    Header set Access-Control-Allow-Credentials   "true"      
+    Header set X-Frame-Options SAMEORIGIN      
+    Header set X-Content-Type-Options nosniff   
+    Header set X-XSS-Protection "1; mode=block" 
+  </IfModule>
+
+# Application URL, Created By Sudam Chandra Pana on 15th Oct 2012# 
+
+              #  RewriteCond %{HTTPS} !on
+              #  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+		RewriteRule    ^home?$						        			index.php
+		RewriteRule    ^App/?$									App/index.php		
+		RewriteRule    ^([a-zA-Z0-9-]*)?$								index.php?PG=$1
+
+		RewriteRule ^([a-zA-Z0-9-]*)/([a-zA-Z0-9-\_\$\=]+)?$                                            index.php?PG=$1&ID=$2
+
+		RewriteRule    ^([a-zA-Z0-9-]*)/([a-zA-Z0-9-\_\$\=]+)/([0-9]+)?$                                     index.php?PG=$1&ID=$2&BID=$3
+                RewriteRule    ^([a-zA-Z0-9-]*)/([0-9]+)/([0-9]+)/([0-9]+)?$                            index.php?PG=$1&ID=$2&BID=$3&CID=$4
+                RewriteRule    ^([a-zA-Z0-9-]*)/([0-9]+)/([0-9]+)/([a-zA-Z0-9-]*)/([a-zA-Z0-9-$_]+)?$	index.php?PG=$1&ID=$2&BID=$3&CID=$4&CAS=$5
+        #RewriteRule    ^([a-zA-Z0-9-]*)/([0-9]+)/([0-9]+)/([0-9]+)?$	index.php?PG=$1&GL=$2&PL=$3&ID=$4
+        RewriteRule    ^error/?$                                        view/error.php
+
+
+#        ErrorDocument 400 http://localhost/ACUMAN/Portal/error
+#        ErrorDocument 403 http://localhost/ACUMAN/Portal/error
+#        ErrorDocument 404 http://localhost/ACUMAN/Portal/error             
+#        ErrorDocument 500 http://localhost/ACUMAN/Portal/error  
+          
+
+                php_value session.cookie_httponly 1
+		php_value upload_max_filesize 30M
+		php_value post_max_size 30M
+                php_value max_execution_time 45

@@ -1,0 +1,5 @@
+
+Job Name :CITEZEN SERVICE API;Start Time :2019-10-23 15:20:27;Message :Record added successfully ;Total count :;End Time :2019-10-23 15:20:29;
+Job Name :CITEZEN SERVICE API;Start Time :2019-10-23 15:25:57;Message :Record added successfully ;Total count :;End Time :2019-10-23 15:25:59;
+Job Name :CITEZEN SERVICE API;Start Time :2019-10-23 15:32:21;Message :Record added successfully ;Total count :;End Time :2019-10-23 15:32:23;
+Job Name :CITEZEN SERVICE API;Start Time :2019-10-23 15:33:58;Message :Record added successfully ;Total count :;End Time :2019-10-23 15:34:01;

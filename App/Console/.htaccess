@@ -1,0 +1,129 @@
+Options +FollowSymlinks
+   
+RewriteEngine On # Turn on the rewriting engine
+RewriteCond %{REQUEST_METHOD} ^TRACE 
+RewriteRule .* - [F]
+
+
+
+# Application URL, Created By Sudam Chandra Pana on 27th June 2012# 
+
+# Application For Login Purpose# 
+               # RewriteCond %{HTTPS} !on
+               # RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+		RewriteRule    ^welcome/?$																	welcome/welcome.php
+		RewriteRule    ^User/welcome/?$																userConsole/welcome.php
+		RewriteRule    ^logout/?$																	logout.php
+
+# Application For Manage Hierarchy#
+		RewriteRule    ^hierarachy/([0-9]+)/([0-9]+)?$		  										manage_hierarchy/hierarachymaster.php?GL=$1&PL=$2
+		RewriteRule    ^ViewHierarachymaster/([0-9]+)/([0-9]+)?$				manage_hierarchy/ViewHierarachymaster.php?GL=$1&PL=$2
+		RewriteRule    ^createSubNode/([0-9]+)/([0-9]+)/([0-9]+)?$				manage_hierarchy/createSubNode.php?GL=$1&PL=$2&SL=$3
+		RewriteRule    ^viewSubNode/([0-9]+)/([0-9]+)/([0-9]+)?$				manage_hierarchy/viewSubNode.php?GL=$1&PL=$2&SL=$3
+		RewriteRule    ^createDepartment/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_hierarchy/createDepartment.php?GL=$1&PL=$2&SL=$3&TL=$4
+		RewriteRule    ^createDepartment/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_hierarchy/createDepartment.php?GL=$1&PL=$2&SL=$3&TL=$4&ID=$5&PG=$6&RC=$7
+		RewriteRule    ^viewDepartment/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_hierarchy/viewDepartment.php?GL=$1&PL=$2&SL=$3&TL=$4	
+		RewriteRule    ^viewDepartment/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_hierarchy/viewDepartment.php?GL=$1&PL=$2&SL=$3&TL=$4&$PG=$5&$RC=$6		
+		RewriteRule    ^createSection/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	    manage_hierarchy/createSection.php?GL=$1&PL=$2&SL=$3&TL=$4
+		RewriteRule    ^viewSection/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$		manage_hierarchy/viewSection.php?GL=$1&PL=$2&SL=$3&TL=$4
+		RewriteRule    ^fillNode/([0-9]+)/([0-9]+)?$							manage_hierarchy/ajaxFillNode.php?nodeId=$1&selVal=$2
+		
+# Application For Manage Link#
+		RewriteRule    ^functionmaster/([0-9]+)/([0-9]+)?$						manage_link/functionmaster.php?GL=$1&PL=$2
+		RewriteRule    ^viewfunction/([0-9]+)/([0-9]+)?$						manage_link/viewfunction.php?GL=$1&PL=$2
+		RewriteRule    ^functionmaster/([0-9]+)/([0-9]+)/([0-9]+)?$				manage_link/functionmaster.php?GL=$1&PL=$2&ID=$3
+		RewriteRule    ^functionmaster/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$				manage_link/functionmaster.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5
+		RewriteRule    ^viewfunction/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$		manage_link/viewfunction.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^viewGL/([0-9]+)/([0-9]+)?$								manage_link/viewGL.php?GL=$1&PL=$2
+		RewriteRule    ^viewGL/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$			manage_link/viewGL.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^addGL/([0-9]+)/([0-9]+)?$								manage_link/addGL.php?GL=$1&PL=$2
+		RewriteRule    ^addGL/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_link/addGL.php?GL=$1&PL=$2&id=$3&PG=$4&RC=$5
+		RewriteRule    ^viewPL/([0-9]+)/([0-9]+)?$								manage_link/viewPL.php?GL=$1&PL=$2
+		RewriteRule    ^viewPL/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$			manage_link/viewPL.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^addPL/([0-9]+)/([0-9]+)?$								manage_link/addPL.php?GL=$1&PL=$2
+		RewriteRule    ^addPL/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_link/addPL.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5	
+		RewriteRule    ^viewButton/([0-9]+)/([0-9]+)?$							manage_link/viewButton.php?GL=$1&PL=$2
+		RewriteRule    ^viewButton/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$		manage_link/viewButton.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^addButton/([0-9]+)/([0-9]+)?$							manage_link/addButton.php?GL=$1&PL=$2
+		RewriteRule    ^addButton/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$					manage_link/addButton.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5	
+		
+		RewriteRule    ^viewTab/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$			manage_link/viewTab.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^viewTab/([0-9]+)/([0-9]+)?$								manage_link/viewTab.php?GL=$1&PL=$2
+		RewriteRule    ^addTab/([0-9]+)/([0-9]+)?$								manage_link/addTab.php?GL=$1&PL=$2
+		RewriteRule    ^addTab/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_link/addTab.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5	
+
+		
+# Application For Manage User#
+		RewriteRule    ^addLocation/([0-9]+)/([0-9]+)?$							manage_user/addLocation.php?GL=$1&PL=$2
+		RewriteRule    ^addLocation/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_user/addLocation.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5
+		RewriteRule    ^viewLocation/([0-9]+)/([0-9]+)?$						manage_user/viewLocation.php?GL=$1&PL=$2
+		RewriteRule    ^viewLocation/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_user/viewLocation.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^EditLocation/([0-9]+)/([0-9]+)/([0-9]+)?$				manage_user/addLocation.php?GL=$1&PL=$2&id=$3
+		
+		RewriteRule    ^addDesignation/([0-9]+)/([0-9]+)?$						manage_user/addDesignation.php?GL=$1&PL=$2
+		RewriteRule    ^viewDesignation/([0-9]+)/([0-9]+)?$						manage_user/viewDesignation.php?GL=$1&PL=$2
+		RewriteRule    ^viewDesignation/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_user/viewDesignation.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^EditDesignation/([0-9]+)/([0-9]+)/([0-9]+)?$			manage_user/addDesignation.php?GL=$1&PL=$2&id=$3
+		RewriteRule    ^addDesignation/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_user/addDesignation.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5	
+		
+		RewriteRule    ^addGrade/([0-9]+)/([0-9]+)?$							manage_user/addGrade.php?GL=$1&PL=$2
+		RewriteRule    ^addGrade/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_user/addGrade.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5
+		RewriteRule    ^viewGrade/([0-9]+)/([0-9]+)?$							manage_user/viewGrade.php?GL=$1&PL=$2
+		RewriteRule    ^viewGrade/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_user/viewGrade.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^EditGrade/([0-9]+)/([0-9]+)/([0-9]+)?$					manage_user/addGrade.php?GL=$1&PL=$2&id=$3
+		
+		RewriteRule    ^addGroup/([0-9]+)/([0-9]+)?$							manage_user/addGroup.php?GL=$1&PL=$2
+		RewriteRule    ^addGroup/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_user/addGroup.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5
+		RewriteRule    ^viewGroup/([0-9]+)/([0-9]+)?$							manage_user/viewGroup.php?GL=$1&PL=$2
+		RewriteRule    ^viewGroup/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_user/viewGroup.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^EditGrade/([0-9]+)/([0-9]+)/([0-9]+)?$					manage_user/addGroup.php?GL=$1&PL=$2&id=$3
+		
+		RewriteRule    ^addUser/([0-9]+)/([0-9]+)?$								manage_user/addUser.php?GL=$1&PL=$2	
+		RewriteRule    ^addUser/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$					manage_user/addUser.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5
+		RewriteRule    ^viewUser/([0-9]+)/([0-9]+)?$							manage_user/viewUser.php?GL=$1&PL=$2
+		RewriteRule    ^viewUser/([0-9]+)/([0-9]+)/([0-9]+)?$							manage_user/viewUser.php?GL=$1&PL=$2&selStatus=$3
+		RewriteRule    ^viewUser/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$			manage_user/viewUser.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^viewExUser/([0-9]+)/([0-9]+)?$							manage_user/userProfile.php?GL=$1&PL=$2			
+		RewriteRule    ^EditUser/([0-9]+)/([0-9]+)/([0-9]+)?$					manage_user/addUser.php?GL=$1&PL=$2&id=$3
+		
+		RewriteRule    ^setPermission/([0-9]+)/([0-9]+)?$						manage_user/setPermission.php?GL=$1&PL=$2
+		RewriteRule    ^viewPermission/([0-9]+)/([0-9]+)?$						manage_user/viewPermission.php?GL=$1&PL=$2
+		
+		RewriteRule    ^userProfile/([0-9]+)/([0-9]+)?$							manage_user/userProfile.php?GL=$1&PL=$2
+		
+		RewriteRule    ^assignAdmin/([0-9]+)/([0-9]+)?$							manage_user/assignAdmin.php?GL=$1&PL=$2
+		RewriteRule    ^assignLink/([0-9]+)/([0-9]+)?$						manage_user/assignLink.php?GL=$1&PL=$2
+		
+# Application For Manage Roaming#
+		RewriteRule    ^roamingAccess/([0-9]+)/([0-9]+)?$						manage_roaming/roamingAccess.php?GL=$1&PL=$2
+		RewriteRule    ^viewRoamingAccess/([0-9]+)/([0-9]+)?$					manage_roaming/viewRoamingAccess.php?GL=$1&PL=$2
+		RewriteRule    ^tagPolicestationRange/([0-9]+)/([0-9]+)?$						manage_user/tagPolicestationRange.php?GL=$1&PL=$2
+	#	RewriteRule    ^viewRoamingAccess/([0-9]+)/([0-9]+)?$					manage_roaming/viewRoamingAccess.php?GL=$1&PL=$2
+		
+		
+# Application For Manage Office Timing#
+		RewriteRule    ^addShiftMaster/([0-9]+)/([0-9]+)?$						manage_officeTiming/addShiftMaster.php?GL=$1&PL=$2
+		RewriteRule    ^addShiftMaster/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_officeTiming/addShiftMaster.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5
+		RewriteRule    ^viewShiftMaster/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$	manage_officeTiming/viewShiftMaster.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^viewShiftMaster/([0-9]+)/([0-9]+)?$						manage_officeTiming/viewShiftMaster.php?GL=$1&PL=$2
+		RewriteRule    ^addOfficeTime/([0-9]+)/([0-9]+)?$						manage_officeTiming/addOfficeTime.php?GL=$1&PL=$2
+		RewriteRule    ^viewOfficeTime/([0-9]+)/([0-9]+)?$						manage_officeTiming/viewOfficeTime.php?GL=$1&PL=$2
+		RewriteRule    ^addExpOfficeTime/([0-9]+)/([0-9]+)?$					manage_officeTiming/addExpOfficeTime.php?GL=$1&PL=$2
+		RewriteRule    ^viewExpOfficeTime/([0-9]+)/([0-9]+)?$					manage_officeTiming/viewExpOfficeTime.php?GL=$1&PL=$2
+		RewriteRule    ^addFlexiTime/([0-9]+)/([0-9]+)?$						manage_officeTiming/addFlexiTime.php?GL=$1&PL=$2
+		RewriteRule    ^addFlexiTime/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$						manage_officeTiming/addFlexiTime.php?GL=$1&PL=$2&ID=$3&PG=$4&RC=$5
+		RewriteRule    ^viewFlexiTime/([0-9]+)/([0-9]+)?$						manage_officeTiming/viewFlexiTime.php?GL=$1&PL=$2
+		RewriteRule    ^viewFlexiTime/([0-9]+)/([0-9]+)/([0-9]+)/([0-9]+)?$		manage_officeTiming/viewFlexiTime.php?GL=$1&PL=$2&PG=$3&RC=$4
+		RewriteRule    ^addShiftAssignment/([0-9]+)/([0-9]+)?$					manage_officeTiming/addShiftAssignment.php?GL=$1&PL=$2
+		RewriteRule    ^viewShiftAssignment/([0-9]+)/([0-9]+)?$					manage_officeTiming/viewShiftAssignment.php?GL=$1&PL=$2
+
+# Application For Manage Logo#		
+		RewriteRule    ^colorScheme/([0-9]+)/([0-9]+)?$							manage_logo/colorScheme.php?GL=$1&PL=$2
+		RewriteRule    ^loginLogo/([0-9]+)/([0-9]+)?$							manage_logo/loginLogo.php?GL=$1&PL=$2
+		RewriteRule    ^headerFooter/([0-9]+)/([0-9]+)?$						manage_logo/headerFooter.php?GL=$1&PL=$2		
+
+		ErrorDocument 404 /error.php										
+	
+	
+

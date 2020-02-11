@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+    font-family: 'AkrutiOriSarala06Normal';
+    src: url('../font/osr06nie.eot');
+    src: url('../font/osr06nie.eot?#iefix') format('embedded-opentype'),
+         url('../font/osr06nie.woff') format('woff'),
+         url('../font/osr06nie.ttf') format('truetype'),
+         url('../font/osr06nie.svg#AkrutiOriSarala06Normal') format('svg');
+	
+}
+
+@font-face {
+	font-family: 'Conv_AOCHA06B';
+	src: url('../fonts/AOCHA06B.eot');
+	src: local('☺'), url('../fonts/AOCHA06B.woff') format('woff'), url('../fonts/AOCHA06B.ttf') format('truetype'), url('../fonts/AOCHA06B.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

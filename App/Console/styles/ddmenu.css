@@ -1,0 +1,133 @@
+#LeftMenu{
+	padding: 0px;
+	margin: 0px;
+	width:180px;
+	background-color:#dff3fe;
+}
+#LeftMenu h1 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #000;
+	background-color: #b8e5fa;
+	margin: 0px;
+	height: 22px;
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align:left;
+}
+#LeftMenu .glossymenu{
+	padding: 0;
+	margin: 0px;
+}
+
+#LeftMenu .glossymenu a.menuitem{
+	display: block;
+	position: relative; /*To help in the anchoring of the ".statusicon" icon image*/
+	width: auto;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+	display: block;
+	margin-bottom: 0px;
+	padding-top: 7px;
+	height: 21px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #c0dcea;
+	padding-left: 10px;
+}
+
+/*.glossymenu a.menuitem:visited, .glossymenu .menuitem:active{
+color: #006699;
+}
+*/
+#LeftMenu .glossymenu .menuitem:active{
+color: #000;
+}
+
+#LeftMenu .glossymenu a.menuitem .statusicon{ /*CSS for icon image that gets dynamically added to headers*/
+position: absolute;
+top: 0px;
+right: 0px;
+border: none;
+
+}
+
+#LeftMenu .glossymenu a.menuitem:hover{
+	background-position: 0px 26px;
+	color:#000;
+	background-color: #f2f1f1;
+}
+
+#LeftMenu .glossymenu div.submenu{ /*DIV that contains each sub menu*/
+	margin-right: 0px;
+	background-color:#fff;
+}
+
+#LeftMenu .glossymenu div.submenu ul{ /*UL of each sub menu*/
+list-style-type: none;
+margin: 0;
+padding: 0;
+
+}
+
+#LeftMenu .glossymenu div.submenu ul li{
+	margin:0px;
+	padding:0px;
+	
+}
+
+#LeftMenu .glossymenu div.submenu ul li a{
+	display: block;
+	color: #000;
+	text-decoration: none;
+	padding-left: 23px;
+	font-size: 11px;
+	font-style: normal;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #cecccc;
+	padding-top: 4px;
+	padding-right: 5;
+	padding-bottom: 4px;
+	background-image: url(../images/bullet.jpg);
+	background-repeat: no-repeat;
+	background-position: 12px 5px;
+	margin-right: 0px;
+	line-height: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #cecccc;
+}
+
+#LeftMenu .glossymenu div.submenu ul li a:hover{
+	colorz: white;
+	color: #000000;
+	background-color: #F4F4F4;
+}
+
+#LeftMenu .glossymenu div.submenu ul li a.active{
+	colorz: white;
+	color: #ff0000;
+	background-color: #fdf8df;
+}
+
+.nosub{
+	background-image: url(../images/nosubarrow.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 28px;
+	width: 20px;
+}
+
+.nosub:hover {
+}
+
+

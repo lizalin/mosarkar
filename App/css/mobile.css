@@ -1,0 +1,151 @@
+.mobileHeader {
+	background: #006096;
+    height: 56px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 9;
+    box-shadow: 0px 1px 2px #999;
+}
+.mobileHeader h1 {
+	margin: 0px;
+    color: #fff;
+    font-size: 1.4em;
+    line-height: 56px;
+	position: relative;
+}
+.mobileHeader h1 i {
+	vertical-align: middle;
+    margin: 0px 10px;
+}
+.mobileHeader h1 img {
+	vertical-align: middle;
+	width: 22px;
+	margin: 0px 10px;
+}
+.has-header {margin-top: 46px;}
+.image {
+	max-width: 100%;
+    margin: 10px auto 0px;
+    display: block;
+}
+.datepicker{z-index:1151 !important;}
+.form-group{margin-bottom: 5px;}
+label{font-size: 13px;}
+
+.mandatory { margin: -25px -8px 0px 0px!important;}
+
+
+
+.btn {
+    /*border-width: 1px !important;
+    text-shadow: none !important;
+    float: left;
+    margin-right: 20px;
+	padding: 3px 12px;
+	border-radius: 3px;*/
+}
+
+.numbering { 
+	background-color: #E3532E;
+    padding: 10px;
+    margin-right: 10px;
+    color: #fff;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.mrgn { 
+	margin: 5px 5px 5px 0px;
+}
+
+.page-content {
+    background-color: #EEEEEE;
+	padding: 10px;
+}
+
+.searchpnl { 
+	width: 100%;
+	width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+	border-radius: 0px;
+}
+
+.itemdiv.dialogdiv > .body > .time {
+    position: static;
+    float: right;
+    width: 100%;
+}
+   
+.cards {
+	margin: 10px 0px;
+    position: relative;
+    background: #fff;
+    box-shadow: 0px 2px 3px #ccc;
+}
+.cards hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.cardTab {
+	padding: 3px 0px;
+    background: #eee!important;
+}
+.cardTab a {
+	width: 33.33%;
+    display: block;
+    background: #eee!important;
+    border: 0px;
+    float: left;
+    color: #000!important;
+	padding: 6px 4px;
+    border-left: 1px solid #ccc;
+}
+.cardTab a:first-child {border-left: 0px;}
+.cardTab a:active, .cardTab a:focus {color: #fff!important;}
+.pdng10 {
+	padding: 10px;
+}
+.titleNum {
+	/*padding-left: 20px;*/
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.titleNum img {
+	vertical-align: middle;
+    padding: 0px;
+    margin-left: 5px;
+    width: 16px;
+    margin-top: -2px;
+}
+.newBg:before {background: #EEEEEE;}
+.compStatus {
+	position: absolute;top: 5px;right: 5px;
+    background: #e6e6e6;
+    padding: 2px 10px;
+	color: #fff;
+    font-weight: bold;
+	font-size: 0.9em;
+}
+.compStatus.open {color: #478fca;}
+.compStatus.progress {color: #a069c3;}
+.compStatus.forward {color: #bba600;}
+.compStatus.discard {color: #ff0b0b;}
+.compStatus.resolved {color: #69aa46;}
+.compStatus.reopen {color: #ff892a;}
+.compStatus.escalated {color: #777777;}
+
+
+
+
+
+
+
+
+
+
+

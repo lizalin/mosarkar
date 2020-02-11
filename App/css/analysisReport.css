@@ -1,0 +1,152 @@
+.btn-group>.btn  {
+    margin: 0px!important;
+}
+.mapDiv{min-height: 58vh;border: 1px solid #e0e0e0;}
+.mapDiv h2{font-weight: bold;text-transform: uppercase;}
+.mapDiv h3{font-weight: normal;color: #757575;font-size: 1.4em;padding-left: 10px;}
+.btn-group {}
+.btn-group .btn {
+    background: #fff!important;
+    color: #000!important;
+    border: 1px solid #ccc!important;
+}
+.btn-group .btn:first-child {
+    border-top-left-radius: 4px!important;
+    border-bottom-left-radius: 4px!important;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px!important;
+    border-bottom-right-radius: 4px!important;
+}
+.btn-group .btn.activeTab{background: #e0e0e0!important;}
+.clear{clear: both;}
+.m-b-10{margin-bottom: 10px;}
+.m-r-10{margin-right: 10px;}
+.mapDiv .btn-group{margin-top: -30px;}
+
+.catList ul{margin: 0px;padding: 10px;}
+.catList ul li{list-style: none;margin-bottom: 5px;}
+.catList ul li label{display: block;}
+.perAnalyser{border-top:1px solid #000;padding: 10px;}
+.perAnalyser ul{margin: 0px;padding: 0px;width: 100%;margin: 0px auto;text-align: center;}
+.perAnalyser ul li{display: inline-block;margin-right: 10px;list-style: none;background: #fff;}
+.perAnalyser ul li span{margin-left: 5px;}
+.anaBox{text-decoration: none;padding: 5px 20px;}
+.anaBox1{background: #FFE599;}
+.anaBox2{background: #B6D7A8;}
+.anaBox3{background: #93C47D;}
+.anaBox4{background: #6AA84F;}
+.anaBox5{background: #274E13;}
+
+.control-group {
+    padding: 10px;
+}
+.control {
+    display: block;
+    position: relative;
+    padding-left: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.control__indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: #e6e6e6;
+}
+.control--radio .control__indicator {
+    border-radius: 50%;
+}
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+    background: #ccc;
+}
+.control input:checked ~ .control__indicator {
+    background: #32c787;
+}
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+    background: #0e647d;
+}
+.control input:disabled ~ .control__indicator {
+    background: #e6e6e6;
+    opacity: 0.6;
+    pointer-events: none;
+}
+.control__indicator:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+.control input:checked ~ .control__indicator:after {
+    display: block;
+}
+.control--checkbox .control__indicator:after {
+    left: 8px;
+    top: 4px;
+    width: 3px;
+    height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.control--checkbox input:disabled ~ .control__indicator:after {
+    border-color: #7b7b7b;
+}
+.control--radio .control__indicator:after {
+    left: 7px;
+    top: 7px;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background: #fff;
+}
+.control--radio input:disabled ~ .control__indicator:after {
+    background: #7b7b7b;
+}
+#wordcloud {
+    margin: 30px auto;
+    width: 600px;
+    height: 371px;
+    border: none;
+    background: #fff;
+}
+#wordcloud span.w10, #wordcloud span.w9, #wordcloud span.w8, #wordcloud span.w7 {
+    text-shadow: 0px 1px 1px #ccc;
+}
+#wordcloud span.w3, #wordcloud span.w2, #wordcloud span.w1 {
+    text-shadow: 0px 1px 1px #fff;
+}
+#wordcloud {
+    margin: 30px auto;
+    width: 600px;
+    height: 371px;
+    border: none;
+}
+#wordcloud span.w10, #wordcloud span.w9, #wordcloud span.w8, #wordcloud span.w7 {
+    text-shadow: 0px 1px 1px #ccc;
+}
+#wordcloud span.w3, #wordcloud span.w2, #wordcloud span.w1 {
+    text-shadow: 0px 1px 1px #fff;
+}
+.seaerchpanel{margin-left: 13px;}
+.dash-search {
+    display: flex;
+    text-align: right;
+    justify-content: flex-end;
+}
+.dash-search > div .input-group input {
+    background: #fff!important;
+}
+.dash-search > div.setWidth {
+    width: 220px;
+    margin-right: 30px;
+}

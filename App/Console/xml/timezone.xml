@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<TIMEZONE>
+	<ZONE>
+		<ID>+04:00:00</ID>
+		<NAME>(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+09:30:00</ID>
+		<NAME>(GMT +9:30) Adelaide, Darwin</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+06:00:00</ID>
+		<NAME>(GMT +6:00) Almaty, Dhaka, Colombo</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-09:00:00</ID>
+		<NAME>(GMT -9:00) Alaska</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-04:00:00</ID>
+		<NAME>(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+12:00:00</ID>
+		<NAME>(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-01:00:00</ID>
+		<NAME>(GMT -1:00 hour) Azores, Cape Verde Islands</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+07:00:00</ID>
+		<NAME>(GMT +7:00) Bangkok, Hanoi, Jakarta</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+03:00:00</ID>
+		<NAME>(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+08:00:00</ID>
+		<NAME>(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+5:30:00</ID>
+		<NAME>(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-3:00:00</ID>
+		<NAME>(GMT -3:00) Brazil, Buenos Aires, Georgetown</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+1:00:00</ID>
+		<NAME>(GMT +1:00) Brussels, Copenhagen, Madrid, Paris</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-6:00:00</ID>
+		<NAME>(GMT -6:00) Central Time (US &amp; Canada), Mexico City</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+10:00:00</ID>
+		<NAME>(GMT +10:00) Eastern Australia, Guam, Vladivostok</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+5:00:00</ID>
+		<NAME>(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-12:00:00</ID>
+		<NAME>(GMT -12:00) Eniwetok, Kwajalein</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-10:00:00</ID>
+		<NAME>(GMT -10:00) Hawaii</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+4:30:00</ID>
+		<NAME>(GMT +4:30) Kabul</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+2:00:00</ID>
+		<NAME>(GMT +2:00) Kaliningrad, South Africa</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+5:45:00</ID>
+		<NAME>(GMT +5:45) Kathmandu</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+11:00:00</ID>
+		<NAME>(GMT +11:00) Magadan, Solomon Islands, New Caledonia</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-11:00:00</ID>
+		<NAME>(GMT -11:00) Midway Island, Samoa</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-2:00:00</ID>
+		<NAME>(GMT -2:00) Mid-Atlantic</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-7:00:00</ID>
+		<NAME>(GMT -7:00) Mountain Time (US &amp; Canada)</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-3:30:00</ID>
+		<NAME>(GMT -3:30) Newfoundland</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>-8:00:00</ID>
+		<NAME>(GMT -8:00) Pacific Time (US &amp; Canada)</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+3:30:00</ID>
+		<NAME>(GMT +3:30) Tehran</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>+9:00:00</ID>
+		<NAME>(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</NAME>
+	</ZONE>
+	<ZONE>
+		<ID>00:00:00</ID>
+		<NAME>(GMT) Western Europe Time, London, Lisbon, Casablanca</NAME>
+	</ZONE>
+</TIMEZONE>

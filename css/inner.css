@@ -1,0 +1,218 @@
+
+body {
+    background: #fff;
+}
+
+.innerContent ul{padding-left: 0}
+.innerContent li{position: relative;padding-left: 1.2rem;line-height: 2}
+.innerContent li:before{
+    content: "";
+    height: 10px;
+    width: 10px;
+    background: linear-gradient(to right, var(--primary-color) 0 50%, var(--secondary-color) 50% 100%);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    border-radius: 45px;
+}
+
+.innerBanner {
+    background: #252f53;
+    background-image: url(../images/InnerBanner.jpg);
+    position: relative;
+    z-index: 9;
+    /*background-size: 100%;*/
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    margin-top: 65px;
+}
+
+.innerBanner:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 100%;
+    content: '';
+    z-index: -1;
+}
+.innerBanner .breadcrumb{
+    background-color: transparent;
+    margin:0;
+    padding: 0;
+}
+.innerBanner .breadcrumb-item{
+    color: #fff
+}
+.innerBanner .breadcrumb-item a{
+    color: #ffff00
+}
+.innerBanner .breadcrumb-item+.breadcrumb-item::before{
+    color: #fff;
+    content: ": :";
+}
+.innerBanner .pgHeading{text-transform: uppercase;font-size: 2.5em;}
+.innerBanner .pgSubHeading{color:#999; font-weight:300; font-size:1.5em}
+.innerBody{
+    
+}
+
+.innerContent .infoPanel{
+    padding: 30px;
+    background: #eee;
+    position: relative;
+}
+.innerContent .infoPanel .infoIcon{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    height: 70px;
+    width: 70px;
+    text-align: center;
+}
+.innerContent .infoPanel .infoIcon img{height:100%; width:100%; object-fit:cover}
+.innerContent .infoPanel h2{
+    position: relative;
+    margin-left: 80px;
+}
+.innerContent .infoPanel h2:after{
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    content: '';
+    height: 5px;
+    width: 100px;
+    background: linear-gradient(to right, rgba(43,60,129,1) 0%,rgba(16,151,84,1) 100%);
+
+}
+.innerContent.aboutUs{
+
+}
+
+.innerContent .widget{border: 1px solid #ddd;border-radius: 10px;overflow: hidden;}
+.innerContent .widget .widBtn{
+    background: linear-gradient(to right, rgba(43,60,129,1) 0%,rgba(16,151,84,1) 100%);
+    display: inline-block;
+    width:max-content;
+    padding: 5px 10px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.innerContent .widget .widBtn:hover{
+    text-decoration: none;
+    background: linear-gradient(to right, rgba(16,151,84,1) 0%,rgba(43,60,129,1) 100%);
+}
+.innerContent .widget1 .w-header{}
+.innerContent .widget1 .w-header img{width:100%;height: 200px;object-fit: cover;}
+.innerContent .widget1 .w-body{padding: 30px 15px; padding-bottom: 0}
+.innerContent .widget1 .w-body h2{font-size: 1.5em; font-weight:700;}
+.innerContent .widget1 .w-body h2>small{display: block;margin-top:10px;color: #999;font-weight: 500;font-size: 70%;}
+.innerContent .widget1 .w-footer{padding: 15px;}
+.innerContent .widget1 .w-footer a{color:rgba(43,60,129,1); text-decoration: underline; font-weight:500}
+.innerContent .widget1 .w-footer a:hover{color:#119156}
+.innerContent .widget2 .w-header{padding: 15px}
+.innerContent .widget2 .w-body{padding: 0;border: 1px solid #ddd;border-left: 0;border-right: 0;max-height: 400px;overflow-y:auto;width: 100%;}
+.innerContent .widget2 .w-footer{padding: 15px}
+.innerContent .widget2 .w-footer a{color:#2a3f7f; font-weight:500; text-decoration:underline}
+.innerContent .widget2 .w-footer a:hover{color:#119555; font-weight:500; text-decoration:underline}
+.innerContent .widget2 .w-header .social li{display: inline-block}
+.innerContent .widget2 .w-header .social li:before{display: none;}
+.innerContent .widget2 .w-header .social li a{
+    font-size: 1.5em;
+    display: block;
+    padding: 0 5px;
+    color: #ccc;
+}
+.innerContent .widget2 .w-header .social li a:hover, .innerContent .widget2 .w-header .social li a.active{
+    color: #32aed0;
+}
+
+.innerContent .widget2 .w-footer .w-nav{margin:0; padding:0;}
+.innerContent .widget2 .w-footer .w-nav li{display: inline-block}
+.innerContent .widget2 .w-footer .w-nav li a{
+    font-size: 1.75em;
+    display: block;
+    padding: 0 5px;
+    color: #ccc;
+    line-height: 1;
+}
+.innerContent .widget2 .w-footer .w-nav li a:hover{
+    color: #119256;
+}
+
+.innerContent .widget3{
+    background: linear-gradient(to right, rgba(16,151,84,1) 0%,rgba(43,60,129,1) 100%);
+} 
+.innerContent .widget3 .w-body{
+    padding: 15px;
+} 
+.innerContent .widget3 .w-body h3{display: inline-block;vertical-align: middle;color: #fff;font-size: 1.5em;font-weight: 700;letter-spacing: 2px;width: 73%;} 
+.innerContent .widget3 .w-body h3>small{display: block;font-weight: 400;letter-spacing: 0;font-size: 35px;} 
+.innerContent .widget3 .w-body i{display: inline-block;vertical-align: middle;font-size: 3em;margin-right: 15px;color: #fff;border: 1px solid #fff;height: 60px;width: 20%;text-align: center;line-height: 1.2em;} 
+
+/*By MRD*/
+ .process-flow {
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+/*FAQ page*/
+.faq__item{
+    display: flex;
+    flex-flow: column;
+    border: 1px solid rgb(228, 228, 228);
+    border-bottom: none;
+    border-radius: 1px;
+}
+.faq__item:last-child{border-bottom: 1px solid rgb(228, 228, 228);}
+.faq__item__que{
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 1rem;
+    user-select: none;
+}
+.faq__item.active .faq__item__que{
+    background-color: #f6f6f6;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+.faq__item__ans{
+    height: 0;
+    opacity: 0;
+    padding: 0 1rem;
+    overflow: hidden;
+    transition: .3s ease;
+}
+.faq__item__ans p, .faq__item__ans ul{margin: 0;}
+.faq__item.active .faq__item__ans{
+    opacity: 1;
+    height: auto;
+    padding: 1.5rem 1rem;
+    transition: .1s ease;
+}
+
+@media (min-width: 991px) {
+    .innerContent .infoPanel{
+        padding-left: 100px;
+    }
+    .innerContent .infoPanel .infoIcon {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        right:auto;
+    }
+    .innerContent .infoPanel h2{
+        margin-left:0;
+    }
+
+    .process-flow{width: 500px;}
+    .process-flow img{width: 100%}
+}
+
+@media (min-width: 1200px){
+    .process-flow {
+        width: 450px;
+    }
+}

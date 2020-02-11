@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<Master>
+<Function>
+<ID>30</ID>
+<></>
+<FileName></FileName>
+</Function>
+<Function>
+<ID>4</ID>
+<>Blog</>
+<FileName>Blog.php</FileName>
+</Function>
+<Function>
+<ID>6</ID>
+<>Content Management</>
+<FileName>ViewContent.php</FileName>
+</Function>
+<Function>
+<ID>1</ID>
+<>Global Link</>
+<FileName>ViewGL.php</FileName>
+</Function>
+<Function>
+<ID>8</ID>
+<>Image Gallery</>
+<FileName>Gallery.php</FileName>
+</Function>
+<Function>
+<ID>11</ID>
+<>News &amp; Notice</>
+<FileName>viewNews.php</FileName>
+</Function>
+<Function>
+<ID>5</ID>
+<>Opinion Poll</>
+<FileName>Poll.php</FileName>
+</Function>
+<Function>
+<ID>2</ID>
+<>Primary Link</>
+<FileName>viewPLink.php</FileName>
+</Function>
+<Function>
+<ID>10</ID>
+<>Publication</>
+<FileName>Publication.php</FileName>
+</Function>
+<Function>
+<ID>7</ID>
+<>Tender</>
+<FileName>Tender.php</FileName>
+</Function>
+<Function>
+<ID>29</ID>
+<>Training</>
+<FileName>Training.php</FileName>
+</Function>
+<Function>
+<ID>9</ID>
+<>Video</>
+<FileName>Video.php</FileName>
+</Function>
+</Master>

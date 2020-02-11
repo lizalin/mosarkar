@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<GLMaster>
+	<GLink ID='1'>
+		<GLID>8</GLID>
+		<GLName>123</GLName>
+		<SlNo>8</SlNo>
+		<Status>0</Status>
+	</GLink>
+	<GLink ID='2'>
+		<GLID>2</GLID>
+		<GLName>About Us</GLName>
+		<SlNo>2</SlNo>
+		<Status>1</Status>
+	</GLink>
+	<GLink ID='3'>
+		<GLID>4</GLID>
+		<GLName>ffff</GLName>
+		<SlNo>1</SlNo>
+		<Status>1</Status>
+	</GLink>
+	<GLink ID='4'>
+		<GLID>5</GLID>
+		<GLName>Gallery</GLName>
+		<SlNo>5</SlNo>
+		<Status>1</Status>
+	</GLink>
+	<GLink ID='5'>
+		<GLID>6</GLID>
+		<GLName>gfg</GLName>
+		<SlNo>6</SlNo>
+		<Status>1</Status>
+	</GLink>
+	<GLink ID='6'>
+		<GLID>1</GLID>
+		<GLName>Home</GLName>
+		<SlNo>4</SlNo>
+		<Status>1</Status>
+	</GLink>
+	<GLink ID='7'>
+		<GLID>3</GLID>
+		<GLName>Service</GLName>
+		<SlNo>3</SlNo>
+		<Status>1</Status>
+	</GLink>
+	<GLink ID='8'>
+		<GLID>7</GLID>
+		<GLName>twst</GLName>
+		<SlNo>7</SlNo>
+		<Status>1</Status>
+	</GLink>
+</GLMaster>
