@@ -1,0 +1,104 @@
+-- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
+--
+-- Host: 192.168.10.69    Database: FSCW_FS_DB
+-- ------------------------------------------------------
+-- Server version	5.7.24
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `m_admin_user`
+--
+
+DROP TABLE IF EXISTS `m_admin_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `m_admin_user` (
+  `INT_USER_ID` int(10) NOT NULL AUTO_INCREMENT,
+  `VCH_FULL_NAME` varchar(100) NOT NULL,
+  `INT_GENDER` int(11) NOT NULL,
+  `DTM_DATE_OF_BIRTH` datetime NOT NULL,
+  `VCH_QUALIFICATION` varchar(100) DEFAULT NULL,
+  `VCH_SPECIALIZATION` varchar(50) DEFAULT NULL,
+  `VCH_HOBBY` varchar(500) DEFAULT NULL,
+  `VCH_IMAGE` varchar(100) DEFAULT NULL,
+  `VCH_PH_NO` varchar(16) DEFAULT NULL,
+  `VCH_MOBILE_NO` varchar(15) NOT NULL,
+  `VCH_EMAIL` varchar(50) NOT NULL,
+  `VCH_ADDRESS` varchar(500) NOT NULL,
+  `INT_SUBNODEVAL_ID` int(10) unsigned NOT NULL,
+  `INT_PH_LOCATION` int(10) unsigned NOT NULL,
+  `INT_EMP_TYPE` int(10) unsigned NOT NULL,
+  `INT_OFF_TYPE` int(10) unsigned NOT NULL,
+  `VCH_DATE_OF_JOIN` varchar(15) NOT NULL,
+  `VCH_PROBATION_DATE` varchar(15) DEFAULT NULL,
+  `INT_DESIGNATION_ID` int(10) unsigned NOT NULL,
+  `INT_GRADE_ID` int(10) unsigned NOT NULL,
+  `INT_GROUP_ID` int(10) unsigned NOT NULL,
+  `INT_PRIVILEGE` int(11) DEFAULT '2',
+  `INT_ATTENDANCE` int(11) DEFAULT '0',
+  `INT_PAY_ROLL` int(11) DEFAULT '0',
+  `INT_EPF` int(10) unsigned DEFAULT NULL,
+  `VCH_USER_NAME` varchar(50) NOT NULL,
+  `VCH_FULL_NAME2` varchar(100) DEFAULT NULL,
+  `VCH_PASSWORD` varchar(50) NOT NULL,
+  `VCH_TEMP_PASSWORD` varchar(64) DEFAULT NULL,
+  `VCH_DOMAIN_USER_NAME` varchar(50) NOT NULL,
+  `INT_STATUS` int(10) unsigned DEFAULT '0',
+  `INT_SLNO` int(11) DEFAULT NULL,
+  `INT_PRIMARY_RA` int(10) unsigned DEFAULT NULL,
+  `INT_SECONDARY_RA` int(10) unsigned DEFAULT NULL,
+  `INT_OPTIONAL_RA` int(10) unsigned DEFAULT NULL,
+  `INT_RA_CHECK` int(10) unsigned NOT NULL,
+  `INT_PASS_CHECK` int(10) unsigned NOT NULL,
+  `INT_EX_EMPLOYEE` int(11) NOT NULL DEFAULT '1',
+  `INT_ROAMING_ACCESS` int(10) unsigned NOT NULL DEFAULT '2',
+  `DTM_CREATED_ON` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `INT_CREATED_BY` int(11) DEFAULT NULL,
+  `DTM_UPDATED_ON` datetime DEFAULT NULL,
+  `INT_UPDATED_BY` int(11) DEFAULT NULL,
+  `BIT_DELETED_FLAG` bit(1) DEFAULT b'0',
+  `LAST_ACTIVITY_TIME` datetime DEFAULT NULL,
+  `LOGGED_STATUS` tinyint(3) unsigned DEFAULT '1',
+  `DTM_PASSWORD_CHANGE` datetime DEFAULT NULL,
+  `INT_ACCESS_TYPE` int(11) DEFAULT '1' COMMENT '1- All, 2-Web, 3-Mobile',
+  `LOGIN_STATUS` tinyint(1) DEFAULT '0',
+  `FIRST_FAILED_LOGIN` datetime DEFAULT NULL,
+  `FAILED_LOGIN_COUNT` int(11) DEFAULT '0',
+  `USER_STATUS` int(11) DEFAULT NULL,
+  `LOGIN_TIME` datetime DEFAULT NULL,
+  PRIMARY KEY (`INT_USER_ID`),
+  KEY `INNNN_m_admin_user 5:35 PM 2/20/2018 01-1013` (`INT_USER_ID`,`BIT_DELETED_FLAG`,`INT_STATUS`,`VCH_FULL_NAME`(88)),
+  KEY `INNNN_M_ADMIN_USER 5:21 PM 8/2/2018 01-0723` (`INT_USER_ID`,`BIT_DELETED_FLAG`,`INT_EX_EMPLOYEE`,`INT_STATUS`,`INT_DESIGNATION_ID`,`VCH_FULL_NAME`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `m_admin_user`
+--
+
+LOCK TABLES `m_admin_user` WRITE;
+/*!40000 ALTER TABLE `m_admin_user` DISABLE KEYS */;
+INSERT INTO `m_admin_user` VALUES (1,'Super Administrator',1,'0000-00-00 00:00:00','','','','','','0','sudam@csmpl.com','BBSR',0,0,1,0,'00-00-0000','',0,0,0,0,0,0,0,'supAdmin','Super Administrator','e6e061838856bf47e1de730719fb2609','','supAdmin',1,0,0,0,0,0,1,1,1,'2015-01-05 05:08:26',0,'2019-10-02 17:30:19',0,_binary '\0','2020-02-11 15:31:32',2,'2019-10-02 17:30:19',1,0,'2019-11-14 16:57:28',1,NULL,NULL),(2,'FSCWS ',1,'0000-00-00 00:00:00','','',NULL,'','/','7978030762','jaideep.kumar@csm.co.in','BBSR',1,1,1,0,'0000-00-00','0000-00-00',1,0,0,2,2,2,0,'fscws','FSCW Secretary','e6e061838856bf47e1de730719fb2609',NULL,'fscws',1,1,NULL,0,0,0,0,1,2,'2019-10-28 08:55:00',1,'2019-12-03 13:22:00',1,_binary '\0','2019-12-04 11:29:40',2,NULL,1,0,NULL,0,NULL,NULL),(3,'CSOKhordha',1,'0000-00-00 00:00:00','','',NULL,'','/','7205787329','jaideepkumar1291@gmail.com','BJB Nagar',20,1,1,0,'0000-00-00','0000-00-00',2,0,0,2,2,2,0,'csokhordha','Cso Khordha','e6e061838856bf47e1de730719fb2609',NULL,'csokhordha',1,2,NULL,0,0,0,0,1,2,'2019-11-12 10:39:01',1,'2019-12-03 13:22:14',1,_binary '\0','2020-01-13 11:30:51',2,NULL,1,0,NULL,0,NULL,NULL),(4,'Operator',1,'0000-00-00 00:00:00','','',NULL,'','/','7205787329','jaideepkumar1291@gmail.com','bbsr',47623,1,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'operator','Operator','e6e061838856bf47e1de730719fb2609',NULL,'operator',1,3,NULL,0,0,0,0,1,2,'2019-11-12 10:41:19',1,'2019-12-03 13:19:35',1,_binary '\0','2019-12-03 13:20:08',2,NULL,1,0,NULL,0,NULL,NULL),(5,'CSO Cuttack',1,'0000-00-00 00:00:00','','',NULL,'','/','8908138116','chinmayee.sahoo@csm.co.in','palasuni',8,1,1,0,'0000-00-00','0000-00-00',2,0,0,2,2,2,0,'csocuttack','CSO Cuttack','e6e061838856bf47e1de730719fb2609',NULL,'csocuttack',1,4,NULL,0,0,0,0,1,2,'2019-11-18 06:03:13',1,NULL,NULL,_binary '\0','2020-02-11 10:28:04',2,NULL,1,0,NULL,0,NULL,NULL),(6,'USER ONE',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user1','USER ONE','55b2ddc9ec1da56fbe26eb2edec50b28',NULL,'user1',1,5,NULL,0,0,0,0,1,2,'2019-11-27 14:28:53',1,NULL,NULL,_binary '\0',NULL,1,NULL,1,0,'2020-02-11 10:22:00',1,NULL,NULL),(7,'USER TWO',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user2','USER TWO','aed4d664b70a892f6eacd7b522c20cb9',NULL,'user2',1,6,NULL,0,0,0,0,1,2,'2019-11-27 14:34:27',1,NULL,NULL,_binary '\0','2019-12-02 11:20:41',2,NULL,1,0,NULL,0,NULL,NULL),(8,'User Three',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user3','User Three','e9d1b191902f09cabc05979d3a7acd5e',NULL,'user3',1,7,NULL,0,0,0,0,1,2,'2019-11-27 14:35:26',1,NULL,NULL,_binary '\0',NULL,1,NULL,1,0,NULL,0,NULL,NULL),(9,'User Four',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user4','User Four','a7bb2fdb7ef7b47bd4081ee12e4c6961',NULL,'user4',1,8,NULL,0,0,0,0,1,2,'2019-11-27 14:36:24',1,NULL,NULL,_binary '\0',NULL,1,NULL,1,0,NULL,0,NULL,NULL),(10,'USER FIVE',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user5','USER FIVE','d40621f98b913fc6c9166e87cb790f48',NULL,'user5',1,9,NULL,0,0,0,0,1,2,'2019-11-28 05:42:29',1,NULL,NULL,_binary '\0',NULL,1,NULL,1,0,NULL,0,NULL,NULL),(11,'User Six',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user6','User Six','686c6f582339d051d02193bea392bf13',NULL,'user6',1,10,NULL,0,0,0,0,1,2,'2019-11-28 05:47:28',1,NULL,NULL,_binary '\0',NULL,1,NULL,1,0,NULL,0,NULL,NULL),(12,'User Seven',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user7','User Seven','9befc891546a6f90176f2f418a8bcdc3',NULL,'user7',1,11,NULL,0,0,0,0,1,2,'2019-11-28 05:52:17',1,NULL,NULL,_binary '\0',NULL,1,NULL,1,0,NULL,0,NULL,NULL),(13,'User Eight',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','BBSR',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user8','User Eight','d72f2e0a496f37b1ee91abc250f7e4da',NULL,'user8',1,12,NULL,0,0,0,0,1,2,'2019-11-28 05:54:06',1,NULL,NULL,_binary '\0',NULL,1,NULL,1,0,NULL,0,NULL,NULL),(14,'User Nine',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user9','User Nine','03f8a8431004659208c4fbb4e3af4be7',NULL,'user9',1,13,NULL,0,0,0,0,1,2,'2019-11-28 05:56:22',1,NULL,NULL,_binary '\0',NULL,1,NULL,1,0,NULL,0,NULL,NULL),(15,'User Ten',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,0,2,0,'0000-00-00','0000-00-00',3,0,0,2,2,2,0,'user10','User Ten','f975924c274b151302c5eb5997443c56',NULL,'user10',1,14,NULL,0,0,0,0,1,2,'2019-11-28 06:10:13',1,NULL,NULL,_binary '\0','2020-02-11 10:10:40',2,'2020-02-11 10:07:28',1,5,NULL,0,NULL,NULL),(16,'PA to Secretary',1,'0000-00-00 00:00:00','','',NULL,'','/','9999999999','test@test.com','bbsr',1,1,1,0,'0000-00-00','0000-00-00',4,0,0,2,2,2,0,'pasecretary','PA to Secretary','569b7ddbc964d2540189c284d5b1dafb','','pasecretary',1,15,NULL,0,0,0,1,1,2,'2019-11-28 06:16:53',1,'2020-02-11 10:26:48',0,_binary '\0','2020-02-11 10:27:08',2,'2020-02-11 10:26:48',1,0,'2019-12-03 13:16:20',1,NULL,NULL);
+/*!40000 ALTER TABLE `m_admin_user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-02-11 15:48:11

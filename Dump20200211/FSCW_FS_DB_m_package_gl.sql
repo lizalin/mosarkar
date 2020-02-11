@@ -1,0 +1,55 @@
+-- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
+--
+-- Host: 192.168.10.69    Database: FSCW_FS_DB
+-- ------------------------------------------------------
+-- Server version	5.7.24
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `m_package_gl`
+--
+
+DROP TABLE IF EXISTS `m_package_gl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `m_package_gl` (
+  `INT_P_GL_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `VCH_P_GL_NAME` varchar(50) NOT NULL,
+  `INT_STATUS` int(11) NOT NULL,
+  `VCH_IMAGE_NAME` varchar(100) DEFAULT NULL,
+  `BIT_DELETED_FLAG` bit(1) NOT NULL DEFAULT b'0',
+  `DTM_CREATED_DATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`INT_P_GL_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `m_package_gl`
+--
+
+LOCK TABLES `m_package_gl` WRITE;
+/*!40000 ALTER TABLE `m_package_gl` DISABLE KEYS */;
+INSERT INTO `m_package_gl` VALUES (1,'Manage Link',1,'linkIcon.png',_binary '\0','2016-02-24 05:33:11'),(2,'Manage User',1,'userIcon.png',_binary '\0','2016-02-24 05:33:11'),(3,'Manage Theme',1,'themeIcon.png',_binary '\0','2016-02-24 05:33:11');
+/*!40000 ALTER TABLE `m_package_gl` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-02-11 15:48:13
