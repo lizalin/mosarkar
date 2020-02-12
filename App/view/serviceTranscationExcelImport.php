@@ -51,6 +51,18 @@
                         <!--===================================================-->
                         <div class="card-body">
                            <!--Static-->
+                           <div class="form-group row">
+                              <label class="col-12 col-md-2 col-xl-2 control-label" for="demo-email-input">Select District <span class="text-danger">*</span></label>
+                              <div class="col-12 col-md-5 col-xl-4">
+                                 <span class="colon">:</span>
+                                 <select class="form-control" name="vchDistrictId" id="vchDistrictId">
+                                    <option value="0">---Select District---</option>
+                                    <!-- <option value="1">Home Department</option>
+                                    <option value="2">H&FW Department</option> -->
+                                 </select>
+                                 <!-- <small class="help-block text-primary">Please enter your email</small> -->
+                              </div>
+                            </div>
                             <div class="form-group row">
                               <label class="col-12 col-md-2 col-xl-2 control-label" for="demo-email-input">Select Department <span class="text-danger">*</span></label>
                               <div class="col-12 col-md-5 col-xl-4">
@@ -126,6 +138,7 @@
       loadNavigation('Dashboard');
       indicate = 'yes';
       getDepartmentList('vchDepartmentId','0');
+      getDistrictList('vchDistrictId','0','0')
       <?php if($outMsg != '') { ?>
             viewAlert('<?php echo $outMsg;?>','','<?php echo $redirectLoc;?>');
         <?php } ?> 
@@ -133,23 +146,25 @@
     });
 
     function validateForm(){
-        // if(!selectDropdown('vchDepartmentId','Select Department')){
-        // return false;  }  
-        // if(!selectDropdown('intServiceId','Select Service')){
-        // return false;  } 
-        // if (!blankCheck('vchExcelFile' , 'Please Upload Excel File')) {         
-        //  return false;
-        //  } 
-        // if (!IsCheckFile('vchExcelFile', 'Invalid file types. Upload only ', 'xls')){
-        //                            return false;
-        // }
-        //                    //   var fileSize_inKB = Math.round(($("#vchExcelFile")[0].files[0].size / 1024));
-        //                    //   if (fileSize_inKB > 1024)
-        //                    //   {
-        //                    //       viewAlert(' File size cannot be more than 1MB.');
-        //                    //       return false;
-        //                    //   }
-        // $('#hdnQs').val('U');
+        if(!selectDropdown('vchDistrictId','Select District')){
+        return false;  }
+        if(!selectDropdown('vchDepartmentId','Select Department')){
+        return false;  }  
+        if(!selectDropdown('intServiceId','Select Service')){
+        return false;  } 
+        if (!blankCheck('vchExcelFile' , 'Please Upload Excel File')) {         
+         return false;
+         } 
+        if (!IsCheckFile('vchExcelFile', 'Invalid file types. Upload only ', 'xls')){
+                                   return false;
+        }
+                           //   var fileSize_inKB = Math.round(($("#vchExcelFile")[0].files[0].size / 1024));
+                           //   if (fileSize_inKB > 1024)
+                           //   {
+                           //       viewAlert(' File size cannot be more than 1MB.');
+                           //       return false;
+                           //   }
+        $('#hdnQs').val('U');
         $('form').submit();
 
     }

@@ -13,10 +13,10 @@
 //    $dbName = 'acuman_cmo';
 //    $dbPort = '3306';
 
-    $dbHost = '192.168.10.69';
-    $dbUser = 'fscwdevu';
-    $dbPass = 'Fscw@fs#19';
-    $dbName = 'FSCW_FS_DB';
+    $dbHost = 'localhost';
+    $dbUser = 'root';
+    $dbPass = 'root';
+    $dbName = 'fms';
     $dbPort = '3306';
 
     /*$dbHost = '192.168.10.69';

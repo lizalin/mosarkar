@@ -1871,7 +1871,8 @@ function socialTiming ($gdt)
         } else {
             $parmaset .= "@p_empty='1'";
         }        
-        $sql = "CALL $strProcName('$strProcAction', \"$parmaset\")";
+		$sql = "CALL $strProcName('$strProcAction', \"$parmaset\")";
+		//echo $sql;
         /*used for check sql */
  	  //if($strProcAction=='GQ') {echo $sql.";";exit;}
  	   // echo $sql.";";exit;

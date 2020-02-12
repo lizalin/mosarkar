@@ -9,7 +9,7 @@ class clsTransactionDataImport extends Model {
 
     private function manageTransactionDataImport($action, $arrCondition) {
 
-        //print_r($arrCondition);exit;
+         //print_r($arrCondition);exit;
         $operatorResult = $this->callProc('USP_MG_SERVICE_TRANSACTION_IMPORT', $action, $arrCondition);
 
         /* Activity log Tracker End */
@@ -25,6 +25,7 @@ class clsTransactionDataImport extends Model {
         $fileProgress           = $_FILES['vchExcelFile']['name']; 
         $fileSize               = $_FILES['vchExcelFile']['size'];
         $fileTemp               = $_FILES['vchExcelFile']['tmp_name']; 
+        $intDistrictId          = $_POST['vchDistrictId'];
         $intDepartmentId        = $_POST['vchDepartmentId']; 
         $intServiceId           = $_POST['intServiceId']; 
         $withFeedback           = $_POST['dataType'];
@@ -113,7 +114,7 @@ class clsTransactionDataImport extends Model {
 
 
                         } else{
-                        $excel_data_res = $this->sheetDataFeedback($excel->sheets[0],$intDepartmentId,$intServiceId,$arrRow) ;//.'<br/>'; 
+                        $excel_data_res = $this->sheetDataFeedback($excel->sheets[0],$intDistrictId,$intDepartmentId,$intServiceId,$arrRow) ;//.'<br/>'; 
                         $outMsg =$excel_data_res['insertStr'];
                         $flag=0; 
                         
@@ -260,8 +261,108 @@ class clsTransactionDataImport extends Model {
 
 //Function for preparing multiple insert query from spread Sheet :: Chinmayee :: 23-09-2019
 
-public function sheetDataFeedback($sheet,$intDepartmentId,$intServiceId,$arrRow) 
+public function sheetDataFeedback($sheet,$intDistrictId,$intDepartmentId,$intServiceId,$arrRow) 
 {   
+
+  $sheetData    = $sheet;
+  $numRows      = $sheetData['numRows'];
+  $numCols      = $sheetData['numCols'];
+  $cellData     = $sheetData['cells'];
+  $headerCols   = $cellData[1];
+  $rowsDatas    = $cellData;
+  array_shift($rowsDatas);
+
+  $outbundData  = array();
+
+  $feedback_call_status = FEEDBACK_CALL_STATUS;
+  $feedback_call_status = array_flip($feedback_call_status);
+  $qst_filter_arr = array("intDepartmentId"=>$intDepartmentId,"intServiceId"=>$intServiceId);
+  $resultQstFilter = $this->manageTransactionDataImport('FQID', $qst_filter_arr);
+  
+  $ans_arr = array('YES'=>1,'NO'=>0);
+
+  $qstArrs = array();
+
+   if($resultQstFilter->num_rows>0){
+      while($rows = $resultQstFilter->fetch_assoc()){
+        $qstArrs[$rows['vchQuestionEnglish']] = $rows['intSurveyQuestId'];
+      }
+   }
+
+  $i=0;
+  foreach($rowsDatas as $rowsData){
+
+    $outbundData[$i]['inserttransid'] = $intDepartmentId.$intServiceId.$intDistrictId.$i;
+    $outbundData[$i]['intDepartmentId'] = $intDepartmentId;
+    $outbundData[$i]['intServiceId'] = $intServiceId;
+    $outbundData[$i]['intDistrictId'] = $intDistrictId;
+    $outbundData[$i]['vchName'] = $rowsData[1];
+    $outbundData[$i]['intMobile'] = $rowsData[2];
+    $outbundData[$i]['intAge'] = $rowsData[3];
+    $outbundData[$i]['intGender'] = $rowsData[4];
+    $outbundData[$i]['dtmRegdDateTime'] = $rowsData[5];
+    $outbundData[$i]['jsonRelatedInfo'] = json_encode(array("PACSCODE"=>$rowsData[12],"PACSNAME"=>$rowsData[13],"FARMERCODE"=>$rowsData[14]));
+    $outbundData[$i]['intCreatedThrough'] = 1;
+    $outbundData[$i]['feedback_received']['intOutboundDataId'] = 0;
+    $outbundData[$i]['feedback_received']['dtmFeedbackRcvTime'] = $rowsData[6];
+    $outbundData[$i]['feedback_received']['intFeedbackStatus'] = $feedback_call_status[$rowsData[7]];
+    $outbundData[$i]['feedback_received']['intDepartmentId'] = $intDepartmentId;
+    $outbundData[$i]['feedback_received']['intServiceId'] = $intServiceId;
+    $outbundData[$i]['feedback_received']['intDistrictId'] = $intDistrictId;
+    $outbundData[$i]['feedback_received']['inserttransid'] = $intDepartmentId.$intServiceId.$intDistrictId.$i;
+    
+    if($feedback_call_status[$rowsData[7]]==1){
+        $j=0;
+
+        foreach($qstArrs as $qstArr){
+            $outbundData[$i]['feedback_ans_submited'][$j]['intOutboundDataId'] = 0;
+            $outbundData[$i]['feedback_ans_submited'][$j]['intQuestionId'] = $qstArr;
+            $outbundData[$i]['feedback_ans_submited'][$j]['intAnswerId'] = $ans_arr[$rowsData[$qstArr-1]];
+            $outbundData[$i]['feedback_ans_submited'][$j]['inserttransid'] = $intDepartmentId.$intServiceId.$intDistrictId.$i;
+            $j++;
+        }
+    }else{
+        $outbundData[$i]['feedback_ans_submited'] = array();
+    }
+    
+
+    $i++;
+  }
+
+  $outboundQry = '';
+  $outboundFeedbackQry = '';
+  $outboundFeedbackSubQry = '';
+
+  foreach($outbundData as $outbund){
+
+    $outboundQry .="('".$outbund['inserttransid']."',".$outbund['intDepartmentId'].",".$outbund['intServiceId'].",".$outbund['intDistrictId'].",'".$outbund['vchName']."',".$outbund['intMobile'].",".$outbund['intAge'].",".$outbund['intGender'].",'".$outbund['dtmRegdDateTime']."','".$outbund['jsonRelatedInfo']."',".$outbund['intCreatedThrough']."),";
+    
+    $feedback = $outbund['feedback_received']; 
+    $outboundFeedbackQry .="(".$feedback['intOutboundDataId'].",'".$feedback['dtmFeedbackRcvTime']."',".$feedback['intFeedbackStatus'].",".$feedback['intDepartmentId'].",".$feedback['intServiceId'].",".$feedback['intDistrictId'].",'".$feedback['inserttransid']."'),";
+    
+
+    if(count($outbund['feedback_ans_submited'])>0){
+
+        foreach($outbund['feedback_ans_submited'] as $feedbackans){
+            $outboundFeedbackSubQry .="(".$feedbackans['intOutboundDataId'].",".$feedbackans['intQuestionId'].",".$feedbackans['intAnswerId'].",'".$feedbackans['inserttransid']."'),";
+        }
+    }
+
+  }
+  $insertArr['outboundQry'] = rtrim($outboundQry, ',');
+  $insertArr['outboundFeedbackQry'] = rtrim($outboundFeedbackQry, ',');
+  $insertArr['outboundFeedbackSubQry'] = rtrim($outboundFeedbackSubQry, ',');
+
+  $resultInsert = $this->manageTransactionDataImport('FOUT', $insertArr);
+
+//   echo $outboundQry.'==';exit;
+  echo '<pre>';
+  echo $numRows."==".$numCols;
+  print_r($feedback_call_status);
+  print_r($headerCols);
+//   print_r($rowsDatas);
+  print_r($outbundData);
+  exit;  
   $re                       = '';
   $error_flag               = 0; 
    
@@ -270,14 +371,15 @@ public function sheetDataFeedback($sheet,$intDepartmentId,$intServiceId,$arrRow)
   $queryRow1                = array();
   $queryRow1                = array();
   $ctr1                     = 1;
-  //print_r($sheet);exit;
+//   echo '<pre>';
+//    print_r($sheet);
+//    exit;
            if(count($totalrow1)>0) 
            {
-            $firstRow1=$totalrow1[0]['cells'];                
-            $allcolName   = array_map('strtolower', $firstRow1[1]); 
+            $firstRow1=$totalrow1[0]['cells'];            
+            $allcolName   = $firstRow1[1]; 
             $matchedCol   = array_intersect(REQUIED_XLS_COL, $allcolName);
             
-                          
             if(count($matchedCol)==count(REQUIED_XLS_COL)){
                 $error_flag=0;                   
                 $insertStr='';
@@ -287,46 +389,38 @@ public function sheetDataFeedback($sheet,$intDepartmentId,$intServiceId,$arrRow)
                 $failInsert=0;
                 $rec_cnt=0;
                 
-
+                
                 //$extraCol     = array_diff($allcolName,REQUIED_XLS_COL);
                 $requiredCol=REQUIED_XLS_COL;
-                $Question1              = $firstRow1[1][8];
-                $Question2              = $firstRow1[1][9];
-                $Remarks1               = $firstRow1[1][10];
+                $Question1              = $firstRow1[1][9];
+                $Question2              = $firstRow1[1][10];
                 $Question3              = $firstRow1[1][11];
-                $Question4              = $firstRow1[1][12];
-                $Remarks4               = $firstRow1[1][13];
-                $Question5              = $firstRow1[1][14];
-                $Question6              = $firstRow1[1][15];
-                $Question7              = $firstRow1[1][16];
-                $Remarks7               = $firstRow1[1][17];                
-                $Feedback               = $firstRow1[1][19];
-                $CallingDate            = $firstRow1[1][20];
-                $departmentid           = $firstRow1[1][1];
-                $serviceid              = $firstRow1[1][2];
+                $Feedback               = $firstRow1[1][7];
+                $CallingDate            = $firstRow1[1][6];
+                $districtId             = $intDistrictId;
+                $departmentid           = $intDepartmentId;
+                $serviceid              = $intServiceId;
 
                  array_push($requiredCol,$Question1);
                  array_push($requiredCol,$Question2);
-                 array_push($requiredCol,$Remarks1);
                  array_push($requiredCol,$Question3);
-                 array_push($requiredCol,$Question4);
-                 array_push($requiredCol,$Remarks4);
-                 array_push($requiredCol,$Question5);
-                 array_push($requiredCol,$Question6);
-                 array_push($requiredCol,$Question7);
-                 array_push($requiredCol,$Remarks7);
                  array_push($requiredCol,$Feedback);
                  array_push($requiredCol,$CallingDate);
+                 array_push($requiredCol,$districtId);
                  array_push($requiredCol,$departmentid);
                  array_push($requiredCol,$serviceid);
                  $requiredCol=array_map('strtolower',$requiredCol);
                  $extraCol     = array_diff($allcolName,$requiredCol);
+                 echo '<pre>';
+                print_r($matchedCol);
+                print_r($firstRow1[1][9]);
+                print_r($requiredCol);
+                exit;
                  $x=0;
                  foreach($extraCol as $extCol){
                     $extraColLeft[$x]=$extCol; 
                     $x++;                 
                  } 
-
 
 
                 
@@ -339,25 +433,64 @@ public function sheetDataFeedback($sheet,$intDepartmentId,$intServiceId,$arrRow)
                                     $insertStr ='';
                                    // $combinedArr= array_combine($allcolName,$row22);
                                     //echo '<pre>';print_r($row22);exit;
-                                    $Name                   = (!empty($row22['4']))?$row22['4']:'';
-                                    $Mobile                 = (!empty($row22['5']))?$row22['5']:'';
-                                    $District               = (!empty($row22['3']))?$row22['3']:'0';                                    
-                                    $Age                    = (!empty($row22['6']))?$row22['6']:'';
-                                    $Gender                 = (!empty($row22['7']))?$row22['7']:'';
-                                    $ps_hs_id               = (!empty($row22['8']))?$row22['8']:'0';
-                                    $Question1              = (!empty($row22[9]))?$row22[9]:'';
-                                    $Question2              = (!empty($row22[10]))?$row22[10]:'';
-                                    $Remarks2               = (!empty($row22[11]))?$row22[11]:'';
-                                    $Question3              = (!empty($row22[12]))?$row22[12]:'';
-                                    $Question4              = (!empty($row22[13]))?$row22[13]:'';
-                                    $Remarks4               = (!empty($row22[14]))?$row22[14]:'';
-                                    $Question5              = (!empty($row22[15]))?$row22[15]:'';
-                                    $Question6              = (!empty($row22[16]))?$row22[16]:'';
-                                    $Question7              = (!empty($row22[17]))?$row22[17]:'';
-                                    $Remarks7               = (!empty($row22[18]))?$row22[18]:'';
-                                    $FeedbackStatus         = (!empty($row22[19]))?$row22[19]:'0';
-                                    $Feedback               = (!empty($row22[20]))?$row22[20]:'';
-                                    $CallingDate            = (strtotime($row22[21])>0)?date('Y-m-d h:i:s',strtotime($row22[21])):'0000-00-00 00:00:00';;
+                                    $Name                   = (!empty($row22['1']))?$row22['1']:'';
+                                    $Mobile                 = (!empty($row22['2']))?$row22['2']:'0';
+                                    $Age                    = (!empty($row22['3']))?$row22['3']:'0';
+                                    $Gender                 = (!empty($row22['4']))?$row22['7']:'0';
+                                    $dtmRegdDateTime        = (!empty($row22['5']))?$row22['5']:'';
+                                    $dtmFeedbackRcvTime     = (!empty($row22['6']))?$row22['6']:'';
+                                    $intFeedbackStatus      = (!empty($row22['7']))?$row22['7']:'';
+                                    $intCreatedThrough      = (!empty($row22['8']))?$row22['8']:'1';
+                                    $Answer1                = (!empty($row22['9']))?$row22['9']:'';
+                                    $Answer2              = (!empty($row22['10']))?$row22['10']:'';
+                                    $Answer3              = (!empty($row22['11']))?$row22['11']:'';
+                                    $PACSCODE               = (!empty($row22['12']))?$row22['12']:'';
+                                    $PACSNAME               = (!empty($row22['13']))?$row22['13']:'';
+                                    $FARMERCODE             = (!empty($row22['14']))?$row22['14']:'';
+                                    $jsonRelatedInfo        = array("PACSCODE"=>$PACSCODE,"PACSNAME"=>$PACSNAME,"FARMERCODE"=>$FARMERCODE);
+                                    $jsonRelatedInfos       = json_encode($jsonRelatedInfo);
+
+                                    // echo $Answer1."<br>";
+                                    // echo $questionAnswerQuery1111 ="('".$Answer1."'),";
+                                    // $CallingDate            = (strtotime($row22[21])>0)?date('Y-m-d h:i:s',strtotime($row22[21])):'0000-00-00 00:00:00';;
+
+                                    if(!empty($Question1)){
+                                        // echo $Answer1;
+                                        $arrQuestId1['intDepartmentId']=$intDepartmentId;
+                                        $arrQuestId1['intServiceId']=$intServiceId;
+                                        $arrQuestId1['question']=$Question1;
+                                        $Question1IdRes=$this->manageTransactionDataImport('FQID', $arrQuestId1);
+                                        if($Question1IdRes->num_rows>0){
+                                            $Question1IdResRow=$Question1IdRes->fetch_array();
+                                            $Question1Id=$Question1IdResRow['intSurveyQuestId'];
+                                            if($Answer1 != ""){
+
+                                                $questionAnswerQuery1111 ="('".$QuestionId."','".$Answer1."'),";
+                                            }
+                                        }
+                                        
+                                    }
+
+                                    if(!empty($Question2)){
+                                        // echo $Answer1;
+                                        // print_r($arrQuestId2);
+                                        $arrQuestId2['intDepartmentId']=$intDepartmentId;
+                                        $arrQuestId2['intServiceId']=$intServiceId;
+                                        $arrQuestId2['question']=$Question2;
+                                        print_r($arrQuestId2);
+                                        $Question2IdRes=$this->manageTransactionDataImport('FQID', $arrQuestId2);
+                                        if($Question2IdRes->num_rows>0){
+                                            $Question2IdResRow=$Question2IdRes->fetch_array();
+                                            // print_r($Question2IdResRow);
+                                            $Question2Id=$Question2IdResRow['intSurveyQuestId'];
+                                            if($Answer2 != ""){
+
+                                                $questionAnswerQuery2222 ="('".$Question2Id."','".$Answer2."'),";
+                                            }
+                                        }
+                                        
+                                    }
+
                                     $questionAnswerQuery='';
                                     if(!empty($Question1)){
                                             $arrCondition1['answerSlno']=$Question1;
@@ -367,6 +500,7 @@ public function sheetDataFeedback($sheet,$intDepartmentId,$intServiceId,$arrRow)
                                             $Question1Res=$this->manageTransactionDataImport('FQD', $arrCondition1);
                                             if($Question1Res->num_rows>0){
                                                 $Question1ResRow=$Question1Res->fetch_array();
+                                                // print_r($Question1ResRow);
                                                 $RETURNVAL=$Question1ResRow['@RETURNVAL'];
                                             }
                                             $explodeRETURNVAL1=explode('~~',$RETURNVAL);
@@ -572,6 +706,7 @@ public function sheetDataFeedback($sheet,$intDepartmentId,$intServiceId,$arrRow)
                         }
                    $ctr1++;
                 }
+                exit;
                  $insertStr       = $outMsg;
                 // $counterArr['total'] =$rec_cnt;
                 // $counterArr['success'] =$success;

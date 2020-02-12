@@ -52,7 +52,7 @@
     define('MB_10', 10000000);
     define('MB_20', 20000000);
     define('BLANK_DATE','1000-01-01');
-    $requiredColXls = array('name','mobile','district','gender','age','feedback status','ps_hs_id');
+    $requiredColXls = array('vchName','intMobile','intAge','intGender','dtmRegdDateTime','dtmFeedbackRcvTime','intFeedbackStatus','intCreatedThrough','Have You received the payment ?','Do you faced any diffcuties during selling of paddy?','Have you recived token for the selling of paddy?','PACSCODE','PACSNAME','FARMERCODE');
     define('REQUIED_XLS_COL',$requiredColXls);
     define('EXCEL_IMPORT','EXCEL_IMPORT');
 
